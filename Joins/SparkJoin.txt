@@ -1,0 +1,22 @@
+Sort-Merge join:
+Is composed of 2 steps. The first step is to sort the datasets and the second operation is to merge the sorted data in the partition by iterating over the elements 
+and according to the join key join the rows having the same value.
+
+From spark 2.3 Merge-Sort join is the default join algorithm in spark. 
+However, this can be turned down by using the internal parameter 
+
+
+‘spark.sql.join.preferSortMergeJoin’ which by default is true.
+
+
+Broadcast joins:
+import org.apache.spark.sql.functions.broadcast
+val dataframe = largedataframe.join(broadcast(smalldataframe), "key")
+
+maximum size for the broadcast table 8GB. Thus, it is not possible to broadcast tables which are greater than 8GB.
+
+Size to automatically apply broadcast joins. The threshold can be configured using “spark.sql.autoBroadcastJoinThreshold”.
+
+
+Shuffle Hash Join:
+
