@@ -1,3 +1,11 @@
+Partition Size:
+Target Size <= 200MB
+Partition Size = Stage Input Data/Target Size  
+Stage Input = 210GB
+Partition Size = = 210GB/ 200MB = 1050
+but if cluster is 2000cores 
+Partition Size = 2000
+
 Sort-Merge join:
 Is composed of 2 steps. The first step is to sort the datasets and the second operation is to merge the sorted data in the partition by iterating over the elements 
 and according to the join key join the rows having the same value.
